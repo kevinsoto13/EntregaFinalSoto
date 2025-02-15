@@ -1,0 +1,186 @@
+@media screen and (max-width: 1288px) {
+  .bienvenidaimg {
+    width: 500px;
+    height: 350px;
+  }
+
+  .servicios {
+    .service-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      gap: 65px;
+
+      .service-card:nth-child(3) {
+        grid-column: span 2;
+        justify-self: center;
+      }
+    }
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  header {
+    .redes-container {
+      display: none;
+    }
+  }
+
+  .bienvenida {
+    flex-direction: column;
+  }
+
+  .bienvenidaimg {
+    width: 650px;
+    height: 450px;
+  }
+  .experience {
+    .experience-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .row > .col-12 {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .servicios {
+    .service-content {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
+      gap: 65px;
+      .service-card:nth-child(3) {
+        grid-column: span 1;
+        justify-self: center;
+      }
+    }
+  }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  .gymimg {
+    width: 450px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bienvenidaimg {
+    display: none;
+  }
+
+  header {
+    flex-direction: row;
+  }
+
+  ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .certificado {
+    width: 550px;
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 652px) {
+  .wrap {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    line-height: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  h3 {
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+  .card-image {
+    display: none;
+  }
+
+  .gymimg {
+    width: 350px;
+    height: 250px;
+  }
+
+  .certificado {
+    width: 350px;
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 458px) {
+  .servicios {
+    .service-content {
+      .service-card {
+        width: 60%;
+        height: auto;
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .conocimiento {
+    .container {
+      .card {
+        .card-text {
+          @include shared-size;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    display: none;
+  }
+
+  .gymimg {
+    @include shared-size;
+  }
+
+  .certificado {
+    width: 250px;
+    height: 150px;
+  }
+}

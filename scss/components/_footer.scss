@@ -1,0 +1,13 @@
+footer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: nth($colores, 1);
+  color: nth($colores, 2);
+
+  .redes-footer {
+    @extend %redes-common;
+    justify-content: center;
+  }
+}

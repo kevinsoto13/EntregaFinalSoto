@@ -1,0 +1,38 @@
+header {
+  color: nth($colores, 2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: $fondo-oscuro;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .logo {
+    max-width: 100px;
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  nav {
+    text-align: center; // Centra el contenido dentro del nav
+
+    ul {
+      font-size: 25px;
+      list-style: none; // Elimina los puntos de la lista
+      padding: 0; // Elimina el padding
+      margin: 0; // Elimina el margin
+      display: flex;
+
+      li {
+        margin: 0 35px;
+      }
+    }
+  }
+
+  .redes-container {
+    @extend %redes-common;
+  }
+}

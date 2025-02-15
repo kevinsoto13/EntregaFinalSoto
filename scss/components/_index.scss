@@ -1,0 +1,133 @@
+//   hero
+
+.hero {
+  padding: 40px;
+  text-align: center;
+  background: $fondo-oscuro; // Fondo transparente para el hero
+
+  h1 {
+    font-size: 70px;
+    line-height: 80px;
+    font-weight: 600;
+    font-style: normal;
+    color: nth($colores, 2);
+    text-transform: uppercase;
+  }
+}
+
+//   bienvenida
+
+.bienvenida {
+  background: $fondo-gris;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .bienvenidaimg {
+    width: 650px;
+    height: 450px;
+    margin-top: 30px;
+    box-shadow: nth($colores, 4);
+    border-radius: 8px;
+  }
+
+  .bienvenida-content {
+    flex: 1;
+    margin: 60px; // Espacio entre la imagen y el contenido
+  }
+}
+
+// servicios
+
+.servicios {
+  @extend %common-padding;
+  background: nth($colores, 5);
+
+  .service-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    .service-card {
+      justify-self: center;
+      align-self: center;
+      width: 300px;
+      height: 700px;
+      padding: 30px;
+      background-color: nth($colores, 3);
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px $fondo-claro;
+      justify-content: space-between;
+
+      img {
+        margin-top: 30px;
+        max-width: 30%;
+        height: auto;
+      }
+    }
+  }
+}
+
+// experience
+
+.experience {
+  @extend %common-padding;
+  background: nth($colores, 4); // Gris oscuro
+  color: nth($colores, 2); // Blanco
+
+  h2 {
+    color: nth($colores, 2);
+  }
+
+  p {
+    margin: 0 auto; /* centra el párrafo */
+    max-width: 75%; /* ancho del párrafo */
+  }
+
+  .experience-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+
+    .experience-card {
+      margin-top: 30px;
+      height: auto;
+
+      img {
+        max-width: 60%; /* imagen a un porcentaje más pequeño */
+        height: auto;
+      }
+    }
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Aplica el estilo cuando el carrito tiene productos */
+.cart-icon-highlight {
+  animation: pulse 1s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.cart-icon-highlight {
+  animation: shake 0.5s ease-in-out;
+}

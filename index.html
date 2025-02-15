@@ -4,68 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Roco Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            padding-top: 20px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>Roco Shop</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body>
+    <header>
+        <a href="index.html">
+            <img class="logo" src="img/logo.png" alt="ROCO TRAINER">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Nosotros</a></li>
+                <li><a href="index.html">Servicios</a></li>
+                <li><a href="index.html">Clientes</a></li>
+                <li><a href="index.html">Contacto</a></li>
+                <li><a href="index.html">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="redes-container">
+            <a href="#" id="cartIcon" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+              <img class="redes" src="img/cart.png" alt="cart">
+            </a>
+          </div>
 
+        
+    </header>
 
-    <div class="container">
+    <main>
+        <section class="hero">
+            <h1 class="m-5">Shop Roco</h1>
+            <span>Asesoramiento Online</span>
+        </section>
 
-
-        <header class="mb-4 text-center">
-            <h1>The Roco Shop Simulator</h1>
-        </header>
-
-
-        <section class="mb-4">
-            <h2 class="h4">Descripción del simulador:</h2>
-            <p>
-                Este simulador representa un carrito de compras en línea. Los usuarios pueden ver una lista de productos
-                disponibles, pero solo aquellos que están en estado <strong>“Activo”</strong> están disponibles para su
-                compra.
-                A medida que el cliente selecciona los productos, estos se agregan al carrito, el cual se muestra en
-                consola con
-                el nombre y precio de cada artículo. Al finalizar, se calcula el total a pagar y se muestra un resumen
-                con los
-                productos seleccionados.
-            </p>
+        
+        <section  class="conocimiento">
+            <h2 class="m-5">Productos destacados</h2>
+            <div id="containerCards" class="wrap">
+            </div>
         </section>
 
 
-        <section class="mb-4">
-            <h2 class="h4">Contexto del Proyecto</h2>
-            <p>
-                Tengo un proyecto de desarrollo web que realicé en la cursada anterior, está basado en la imagen de un
-                entrenador
-                que tiene como finalidad mostrar su identidad y ofrecer servicios como profesional. La idea es poder
-                asociar a ese
-                proyecto una tienda online donde las personas puedan comprar sus productos para entrenar, ya que el
-                entrenador dispone
-                de su propia marca. Como aún es muy pronto para asociar el proyecto completo con el simulador, no vi
-                necesario
-                presentarlo porque es muy pesado.
-            </p>
-            <p>
-                Aunque en esta etapa el simulador aún está en desarrollo, su propósito es ilustrar cómo podrían
-                funcionar las compras
-                en línea dentro de esta plataforma. Eventualmente, se integrará con el sitio web completo.
-            </p>
-        </section>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+            <div class="offcanvas-header">
+              <h5 id="cartSidebarLabel">Your Bag</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div id="cartItems"></div>
+              <div class="mt-3">
+                <button class="btn btn-primary">Shop Now</button>
+                <button class="btn btn-danger" onclick="clearCart()">Clear Cart</button>
+              </div>
+              <div class="mt-2">
+                <strong>Total: </strong><span id="cartTotal">0</span> $
+              </div>
+            </div>
+          </div>
 
+    </main>
 
-        <footer class="text-center mt-5">
-            <p><em>Proyecto en desarrollo.</em></p>
-        </footer>
+    <footer id="footer">
+        <p>&copy; 2024 ROCO TRAINER. Todos los derechos reservados.</p>
+
+        <div class="redes-footer">
+            <a href="">
+                <img class="redes" src="img/instagram.png" alt="instagram">
+            </a>
+            <a href="">
+                <img class="redes" src="img/whatsapp.png" alt="whatsapp">
+            </a>
+        </div>
+    </footer>
 
     </div>
+
+    
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

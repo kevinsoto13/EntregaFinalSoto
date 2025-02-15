@@ -1,0 +1,54 @@
+// Variables:   sombras
+$fondo-oscuro: rgba(0, 0, 0, 0.6); // negro translúcido
+$fondo-gris: rgba(244, 244, 244, 0.8); // gris claro translúcido
+$fondo-claro: rgba(0, 0, 0, 0.2); // negro translúcido claro
+
+//  Listas:  paleta de colores
+$colores: #030303,
+  //negro
+  white,
+  // blanco
+  #ffbf31,
+  // amarillo
+  #3a3936,
+  // gris oscuro
+  #e2e2e2,
+  // gris claro
+  #e1ddd1; // beige
+
+// Extends :
+%redes-common {
+  display: flex;
+  gap: 25px; // Espacio entre los íconos
+}
+
+%common-padding {
+  padding: 20px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+// Mixins :
+
+// no se puede usar extends en el media querie asi que un mixin
+@mixin shared-size {
+  width: 200px;
+  height: 200px;
+}
+// botones mixin
+@mixin btn-style($bg-color, $text-color, $hover-bg, $hover-color) {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: $bg-color;
+  color: $text-color;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background: $hover-bg;
+    color: $hover-color;
+    transform: scale(1.05);
+  }
+}
