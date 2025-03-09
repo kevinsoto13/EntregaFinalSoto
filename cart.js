@@ -1,61 +1,4 @@
-const productos = [
-  {
-    idProducto: 1,
-    codigoInterno: "PD001",
-    nombre: "Cap",
-    estado: "Activo",
-    precio: 10,
-    imagen: "img/cap.jpg",
-  },
-  {
-    idProducto: 2,
-    codigoInterno: "PD002",
-    nombre: "T-shirt",
-    estado: "Activo",
-    precio: 20,
-    imagen: "img/t-shirt.jpg",
-  },
-  {
-    idProducto: 3,
-    codigoInterno: "PD003",
-    nombre: "Gym Bag",
-    estado: "Inactivo",
-    precio: 25,
-    imagen: "",
-  },
-  {
-    idProducto: 4,
-    codigoInterno: "PD004",
-    nombre: "Water Bottle",
-    estado: "Activo",
-    precio: 10,
-    imagen: "img/water bottle.jpg",
-  },
-  {
-    idProducto: 5,
-    codigoInterno: "PD005",
-    nombre: "Jacket",
-    estado: "Activo",
-    precio: 30,
-    imagen: "img/waterproof jacket.jpg",
-  },
-  {
-    idProducto: 6,
-    codigoInterno: "PD006",
-    nombre: "Athletic Shorts",
-    estado: "Inactivo",
-    precio: 15,
-    imagen: "",
-  },
-  {
-    idProducto: 7,
-    codigoInterno: "PD007",
-    nombre: "Stretch band",
-    estado: "Activo",
-    precio: 12,
-    imagen: "img/stretch band.jpg",
-  },
-];
+
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -65,11 +8,85 @@ const cartIcon = document.getElementById("cartIcon");
 const cartItems = document.getElementById("cartItems");
 const cartTotal = document.getElementById("cartTotal");
 
+function loadCheckoutSummary() {
+  const checkoutItems = document.getElementById('checkoutItems');
+  const checkoutTotal = document.getElementById('checkoutTotal');
+  checkoutItems.innerHTML = ""; 
+  let total = 0;
+
+  if (carrito.length > 0) {
+      carrito.forEach(item => {
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('d-flex', 'justify-content-between', 'mb-2');
+          productDiv.innerHTML = `
+              <p>${item.producto.nombre} (${item.cantidad} x ${item.producto.precio} $)</p>
+              <p>${item.producto.precio * item.cantidad} $</p>
+          `;
+          checkoutItems.appendChild(productDiv);
+          total += item.producto.precio * item.cantidad;
+      });
+  } else {
+      checkoutItems.innerHTML = "<p>No hay productos en el carrito.</p>";
+  }
+
+  checkoutTotal.textContent = total;
+}
+
+
+document.getElementById('checkoutModal').addEventListener('show.bs.modal', () => {
+  loadCheckoutSummary();
+});
+
+function processCheckout() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const address = document.getElementById('address').value;
+  const card = document.getElementById('card').value;
+  const cvv = document.getElementById('cvv').value;
+
+  
+  if (!name || !email || !address || !card || !cvv) {
+      alert('Por favor, complete todos los campos.');
+      return;
+  }
+
+  
+  alert('Pago realizado con éxito. Gracias por su compra.');
+  carrito = []; 
+  localStorage.setItem('carrito', JSON.stringify(carrito)); 
+  viewCart(); 
+  updateCartIcon(); 
+
+  // Cerrar el modal
+  const modal = bootstrap.Modal.getInstance(document.getElementById('checkoutModal'));
+  modal.hide();
+}
+
+let productos = [];
+
+const searchProducts = async () => {
+  try {
+    
+    const response = await fetch('productos.json');
+    if (!response.ok) {
+      throw new Error('Error al cargar los productos');
+    }
+
+    productos = await response.json();
+
+    
+    viewProduct(productos);
+
+  } catch (error) {
+    console.error('Error:', error);
+  } 
+};
+
 function saveCart() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-function viewProduct() {
+function viewProduct(productos) {
   const productosDisponibles = productos.filter(
     (tipo) => tipo.estado === "Activo"
   );
@@ -170,6 +187,7 @@ function viewTotal() {
 function clearCart() {
   
   carrito = [];
+  localStorage.setItem('carrito', JSON.stringify(carrito)); 
 
   viewCart();
   updateCartIcon();
@@ -188,5 +206,8 @@ function updateCartIcon() {
   }
 }
 
-viewProduct();
+window.addEventListener('load', () => {
+  searchProducts(); 
+  viewCart(); 
+});
 
