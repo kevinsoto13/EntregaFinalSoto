@@ -266,6 +266,5 @@ window.addEventListener('load', () => {
   searchProducts(); 
   viewCart(); 
   updateCartIcon();
-  console.log(carrito.length);
 });
 
